@@ -72,7 +72,7 @@ class Test_run(unittest.TestCase):
         with self.m_check_out as m_check_out:
             m_check_out.return_value='git version 1.10.1'
 
-            bad_git_string = 'Git version  should be 2.10 or better - Exiting!'
+            bad_git_string = 'Git version should be 2.10 or better - Exiting!'
             if sys.version_info.major is not 3:
                 with self.assertRaisesRegexp(SystemExit, bad_git_string):
                     PullRequestLinuxDriverTest.confirmGitVersion()
@@ -179,7 +179,7 @@ Parameters:
 
 ==========================================================================================
 NOTICE: Source branch IS trilinos/Trilinos::master_merge_20200130_120155
-        : This is allowed, proceeding with testing.
+      : This is allowed, proceeding with testing.
 Set CWD = /dev/null/workspace
 """.format(environ=env_string_io.getvalue())
 
@@ -196,7 +196,8 @@ Set CWD = /dev/null/workspace
                 mock.patch('PullRequestLinuxDriverTest.getCDashTrack'):
             PullRequestLinuxDriverTest.run()
 
-        self.assertEqual(expected_out, m_output.getvalue())
+        self.assertEqual(expected_out.splitlines(),
+                         m_output.getvalue().splitlines())
         m_call.assert_called_once()
 
 

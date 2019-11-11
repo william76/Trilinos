@@ -133,7 +133,7 @@ def confirmGitVersion():
 
     if major_git_version  <  2 or (major_git_version == 2 and
                                    minor_git_version < 10):
-        raise SystemExit("Git version  should be 2.10 or better - Exiting!")
+        raise SystemExit("Git version should be 2.10 or better - Exiting!")
     else:
         print(git_version_string)
 
@@ -445,12 +445,12 @@ def createPackageEnables(arguments):
             with open('packageEnables.cmake',  'w') as f_out:
                 f_out.write(textwrap.dedent("""\
                     MACRO(PR_ENABLE_BOOL  VAR_NAME  VAR_VAL)
-                        MESSAGE("-- Setting ${VAR_NAME} = ${VAR_VAL}")
-                        SET(${VAR_NAME} ${VAR_VAL} CACHE BOOL "Set in $CMAKE_PACKAGE_ENABLES_OUT")
+                        MESSAGE("-- Setting ${{VAR_NAME}} = ${{VAR_VAL}}")
+                        SET(${{VAR_NAME}} ${{VAR_VAL}} CACHE BOOL "Set in $CMAKE_PACKAGE_ENABLES_OUT")
                     ENDMACRO()
 
-                    PR_ENABLE_BOOL(Trilinos_ENABLE_{0} ON)
-                    """.format(enable_map[arguments.job_base_name]) ))
+                    PR_ENABLE_BOOL(Trilinos_ENABLE_{enable_arg} ON)
+                    """.format(enable_arg=enable_map[arguments.job_base_name]) ))
         print('Enabled packages:')
         cmake_rstring = subprocess.check_output(['cmake',
                                                  '-P',
