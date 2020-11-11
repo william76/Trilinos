@@ -91,6 +91,9 @@ except ImportError:
         #if errcode != 0:
         #    raise OSError("Failed to execute module command: {}.".format(" ".join(args)))
 
+        if errcode is None:
+            raise TypeError("ERROR: the errorcode can not be `None`")
+
         return errcode
 
 
