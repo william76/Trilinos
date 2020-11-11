@@ -24,11 +24,20 @@ else:                                                                           
 
 try:
 
+    # This will force the use of our own module command because the LMOD module
+    # command returns nothing, which won't help us deterine if the command actually
+    # passsed or failed.
+    # TODO: Remove this and clean up the file to just have the module() command.
+    raise ImportError("Force use of _our_ module command for testing")
+
     from env_modules_python import module
+    print("NOTICE> [ModuleHelper.py] Using the lmod based `env_modules_python` module handler.")
 
 except ImportError:
     # If importing module from env_modules_python fails, we roll our own
     # version of that function.
+    print("NOTICE> [ModuleHelper.py] `env_modules_python` not found, using our own `module` command.")
+
 
     def module(*args):
         """
@@ -84,8 +93,11 @@ except ImportError:
             errcode = 1
 
         if errcode:
-            print("module output> {}".format(output))
-            print("module stderr> {}".format(stderr))
+            print("")
+            print("[module output start]\n{}\n[module output end]".format(output))
+            print("[module stderr start]\n{}\n[module stderr end]".format(stderr))
+            print("")
+            sys.stdout.flush()
 
         # Uncomment this if we want to throw an error rather than exit with nonzero code
         #if errcode != 0:
