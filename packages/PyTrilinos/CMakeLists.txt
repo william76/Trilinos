@@ -191,7 +191,7 @@ IF(NOX_ENABLE_LOCA)
 ENDIF()
 
 # Python interpreter and header files are required
-FIND_PACKAGE(PythonInterp 2.5 REQUIRED)
+FIND_PACKAGE(PythonInterp 3.5 REQUIRED)
 FIND_PACKAGE(PythonInclude REQUIRED)
 
 # Python module numpy is required
@@ -255,7 +255,7 @@ SET(PyTrilinos_INSTALL_PREFIX ${PyTrilinos_DEFAULT_INSTALL_PREFIX}
 FIND_PACKAGE(Doxygen)
 IF(DOXYGEN_FOUND)
   IF(${DOXYGEN_VERSION} VERSION_EQUAL 1.8.13 AND PyTrilinos_DOCSTRINGS)
-    MESSAGE(FATAL_ERROR 
+    MESSAGE(FATAL_ERROR
       "Doxygen version ${DOXYGEN_VERSION} has a bug that makes it incompatible with "
       "PyTrilinos. To work around this, you may disable PyTrilinos docstrings by setting "
       "PyTrilinos_DOCSTRINGS=OFF. "

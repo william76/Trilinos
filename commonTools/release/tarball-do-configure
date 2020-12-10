@@ -23,7 +23,7 @@ python -V
 rm -fr CMakeCache.txt CMakeFiles/
 
 #fake a dakota for configuring
-#this is a horrible horrible hack that is 
+#this is a horrible horrible hack that is
 #both sick AND wrong, but here we are.
 DAKOTA_DIR=$SOURCE_DIR/packages/TriKota/Dakota
 mkdir $DAKOTA_DIR
@@ -103,7 +103,7 @@ cmake \
 -DBoost_INCLUDE_DIRS=$SEMS_BOOST_INCLUDE_PATH \
 -DBoostLib_INCLUDE_DIRS=$SEMS_BOOST_INCLUDE_PATH \
 -DBoostLib_LIBRARY_DIRS=$SEMS_BOOST_LIBRARY_PATH \
--DPythonInterp_FIND_VERSION=2.7 \
+-DPythonInterp_FIND_VERSION=3.5 \
  \
 -D TriKota_ENABLE_DakotaCMake=ON \
  \

@@ -39,7 +39,7 @@
 
 # Find Python executable which is needed for dependency file building
 MACRO(TRIBITS_FIND_PYTHON)
-  SET(PythonInterp_FIND_VERSION_MIN "2.6")
+  SET(PythonInterp_FIND_VERSION_MIN "3.5")
   IF ("${PythonInterp_FIND_VERSION_DEFAULT}" STREQUAL "")
     SET(PythonInterp_FIND_VERSION_DEFAULT "${PythonInterp_FIND_VERSION_MIN}")
   ENDIF()
@@ -57,7 +57,7 @@ MACRO(TRIBITS_FIND_PYTHON)
   ELSE()
     SET(PythonInterp_REQUIRED_ARG "")
   ENDIF()
-  SET(FIND_PythonInterp_ARGS PythonInterp ${PythonInterp_REQUIRED_ARG}) 
+  SET(FIND_PythonInterp_ARGS PythonInterp ${PythonInterp_REQUIRED_ARG})
   IF (TRIBITS_FIND_PYTHON_UNITTEST)
     SET(PYTHON_EXECUTABLE  ${PYTHON_EXECUTABLE_UNITTEST_VAL})
   ELSE()
