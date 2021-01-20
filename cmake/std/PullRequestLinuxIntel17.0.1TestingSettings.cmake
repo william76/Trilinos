@@ -6,6 +6,8 @@
 
 # Usage: cmake -C PullRequestLinuxIntel17.0.1TestingSettings.cmake
 
+set(CMAKE_EXE_LINKER_FLAGS "$ENV{LDFLAGS} ${CMAKE_EXE_LINKER_FLAGS}")
+
 set (CMAKE_CXX_STANDARD "14" CACHE STRING "Set C++ standard to C++14")
 #Failing tests under C++14
 #Remove line if test has been fixed
